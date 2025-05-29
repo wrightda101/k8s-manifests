@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: slow-start
+  name: slow-start
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: slow-start
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: slow-start
+    spec:
+      containers:
+      - image: nginx
+        name: nginx
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 5
+          periodSeconds: 5
+        resources: {}
+status: {}
