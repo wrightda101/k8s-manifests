@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: simple-server
+  name: simple-server
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: simple-server
+      colour: blue
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: simple-server
+        colour: blue
+    spec:
+      containers:
+      - image: wrightda/simpleserver:0.1.0
+        name: simpleserver
+        args:
+        - blue  
+        resources: {}
+status: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: simple-server
+  name: simple-server
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: simple-server
+  type: NodePort
+status:
+  loadBalancer: {}
