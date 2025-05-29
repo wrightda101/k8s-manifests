@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: slow-start
+  name: slow-start
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: slow-start
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: slow-start
+    spec:
+      containers:
+      - image: wrightda/simpleserver:0.1.0
+        name: simpleserver
+        args:
+        - blue
+        resources: {}
+status: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: slow-start
+  name: slow-start
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: slow-start
+  type: NodePort
+status:
+  loadBalancer: {}
