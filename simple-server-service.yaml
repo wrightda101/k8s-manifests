@@ -5,7 +5,7 @@ metadata:
   creationTimestamp: null
   labels:
     app: simple-server
-    colour: vlue
+    colour: blue
   name: simple-server
 spec:
   ports:
