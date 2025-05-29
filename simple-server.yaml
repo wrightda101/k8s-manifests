@@ -3,25 +3,25 @@ kind: Deployment
 metadata:
   creationTimestamp: null
   labels:
-    app: slow-start
-  name: slow-start
+    app: simple-server
+  name: simple-server
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: slow-start
+      app: simple-server
   strategy: {}
   template:
     metadata:
       creationTimestamp: null
       labels:
-        app: slow-start
+        app: simple-server
     spec:
       containers:
       - image: wrightda/simpleserver:0.1.0
         name: simpleserver
         args:
-        - blue
+        - blue  
         resources: {}
 status: {}
 ---
@@ -30,15 +30,15 @@ kind: Service
 metadata:
   creationTimestamp: null
   labels:
-    app: slow-start
-  name: slow-start
+    app: simple-server
+  name: simple-server
 spec:
   ports:
   - port: 80
     protocol: TCP
     targetPort: 80
   selector:
-    app: slow-start
+    app: simple-server
   type: NodePort
 status:
   loadBalancer: {}
