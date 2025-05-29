@@ -4,7 +4,7 @@ metadata:
   creationTimestamp: null
   labels:
     app: simple-server
-  name: simple-server
+  name: simple-server-blue
 spec:
   replicas: 3
   selector:
@@ -26,21 +26,3 @@ spec:
         - blue  
         resources: {}
 status: {}
----
-apiVersion: v1
-kind: Service
-metadata:
-  creationTimestamp: null
-  labels:
-    app: simple-server
-  name: simple-server
-spec:
-  ports:
-  - port: 80
-    protocol: TCP
-    targetPort: 80
-  selector:
-    app: simple-server
-  type: NodePort
-status:
-  loadBalancer: {}

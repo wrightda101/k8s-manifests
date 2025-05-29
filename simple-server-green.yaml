@@ -4,7 +4,7 @@ metadata:
   creationTimestamp: null
   labels:
     app: simple-server
-  name: simple-server
+  name: simple-server-green
 spec:
   replicas: 3
   selector:
